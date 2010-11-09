@@ -1,0 +1,37 @@
+Radio/Audio Auxiliary Scripts
+
+ecameter-jack.sh
+  to help remember how to get ecameter levels from jackd
+
+flujcheck.sh
+  jack if darkice is running if not start it
+
+html.py
+  generate html from a list of audio files and some settings
+
+icerec.sh
+  record from a jackd port
+
+iceenc.sh
+  encode to free format from output of icerec.sh
+
+icedel.sh
+  clean up for iceenc.sh
+
+icemeter.sh
+  ??? 
+
+icemixer.sh
+  a mixer for the tty using screen
+
+lahora.sh
+   let mpd tell you what time it is
+
+rotter.sh
+   like icerec, but using rotter
+
+startapps.sh
+   usefull as a startup script for qjackctl
+
+stopapps.sh
+  usefull as when qjackctl terminates
