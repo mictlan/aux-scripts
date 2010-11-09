@@ -6,21 +6,36 @@
 #
 # Requires mpc - set the path here.
 
-# if it is not later thatn 11pm and earlier than 6am quit
-if [ $(date +%H) -lt 23 ]
- then
-   if [ $(date +%H) -gt 6 ]
-    then
-      exit 0
-   fi
-fi
-if [ $(date +%H) -gt 6 ]
- then
-   if [ $(date +%H) -lt 23 ]
-    then
-      exit 0
-   fi
-fi
+# Se encapsulo la lógica del la validación de la hora.
+#en caso de error se sale del script enviando 2 señales de error (1,2)
+#para que en caso que no se ejecute por medio de bash se pueda cachar el
+#error con la variable $?
+
+TR="6 23"
+
+function checkTimeValidRange(){
+    HOUR=$(date +%H)
+    if [ $HOUR -lt $2 ]
+     then
+       if [ $HOUR -gt $1 ]
+        then
+          exit 1
+       fi
+    fi
+    if [ $HOUR -gt $1 ]
+     then
+       if [ $HOUR -lt $2 ]
+        then
+          exit 2
+       fi
+    fi
+}
+
+#Ahora a la función se puede mandar a llamar a partir de un intervalo
+#creo que quedaría mas flexible si ademas existiera un archivo de
+#configuración en donde el usuario pueda cambiar tal intervalo
+
+checkTimeValidRange ${TR}
 
 TPATH="$HOME/Música/time" #ruta absoluta hacia biblioteca de la hora
 MPCPATH="Música/time" #ruta a la misma pero relativa a biblioteca de mpd
