@@ -35,3 +35,6 @@ startapps.sh
 
 stopapps.sh
   usefull as when qjackctl terminates
+
+rt-cfg.sh
+  example for setting Real Time priorities
